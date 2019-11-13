@@ -41,23 +41,14 @@
     <!-- START - Category Grid -->
       <ion-grid no-padding>
         <ion-row>
-            <ion-col size="4">
-              <img src="https://via.placeholder.com/300x300">
-            </ion-col>
-            <ion-col size="4">
-                <img src="https://via.placeholder.com/300x300">
-            </ion-col>
-            <ion-col size="4">
-                <img src="https://via.placeholder.com/300x300">
-            </ion-col>
-            <ion-col size="4">
-                <img src="https://via.placeholder.com/300x300">
-            </ion-col>
-            <ion-col size="4">
-                <img src="https://via.placeholder.com/300x300">
-            </ion-col>
-            <ion-col size="4">
-                <img src="https://via.placeholder.com/300x300">
+            <ion-title *ngIf="products==undefined">
+                <img no-margin no-padding class="story_img" src="https://raahee.ir/wp-content/uploads/2019/08/loading27.gif">
+            </ion-title>
+
+            <ion-col size="4"  *ngFor="let p of products; let i =index">
+              <!-- <img [src]="img[i].guid.rendered"> -->
+              <img [src]="p?(p._embedded?p._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url:'https://via.placeholder.com/300x300'):'https://via.placeholder.com/300x300'">
+              <div>{{p.title.rendered}}</div>
             </ion-col>
           </ion-row>
       </ion-grid>
